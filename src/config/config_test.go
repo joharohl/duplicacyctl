@@ -1,10 +1,10 @@
 package config_test
 
 import (
-	"testing"
 	"github.com/joharohl/duplicacyctl/src/config"
 	"github.com/spf13/afero"
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 var rawYaml = []byte(`

@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"github.com/joharohl/duplicacyctl/src/config"
+	"github.com/spf13/afero"
 	"gopkg.in/urfave/cli.v1"
 	"os"
-	"github.com/spf13/afero"
 )
 
 func main() {

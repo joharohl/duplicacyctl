@@ -2,9 +2,9 @@ package config
 
 import (
 	"fmt"
+	"github.com/spf13/afero"
 	"gopkg.in/yaml.v2"
 	"log"
-	"github.com/spf13/afero"
 )
 
 type Config struct {
