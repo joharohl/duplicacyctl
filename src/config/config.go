@@ -16,7 +16,7 @@ func (c Config) String() string {
 	return fmt.Sprint(c.BackupLocations)
 }
 
-func LoadConfig(filename string) *Config {
+func Load(filename string) *Config {
 	var config Config
 	source, err := ioutil.ReadFile(filename)
 	if err != nil {

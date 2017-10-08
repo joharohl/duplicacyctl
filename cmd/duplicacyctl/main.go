@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/joharohl/duplicacy_ctl/src/config"
+	"github.com/joharohl/duplicacyctl/src/config"
 	"gopkg.in/urfave/cli.v1"
 	"os"
 )
@@ -21,7 +21,7 @@ func main() {
 	}
 
 	app.Action = func(c *cli.Context) error {
-		conf := config.LoadConfig(c.String("config"))
+		conf := config.Load(c.String("config"))
 		fmt.Printf(conf.String())
 		return nil
 	}
