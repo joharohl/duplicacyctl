@@ -3,8 +3,8 @@ package config
 import (
 	"fmt"
 	"gopkg.in/yaml.v2"
-	"io/ioutil"
 	"log"
+	"github.com/spf13/afero"
 )
 
 type Config struct {
@@ -16,15 +16,17 @@ func (c Config) String() string {
 	return fmt.Sprint(c.BackupLocations)
 }
 
-func Load(filename string) *Config {
-	var config Config
-	source, err := ioutil.ReadFile(filename)
+func New() *Config {
+	return new(Config)
+}
+
+func (c *Config) Load(fs afero.Fs, filename string) {
+	source, err := afero.ReadFile(fs, filename)
 	if err != nil {
 		log.Fatalf("Could not open config file: %s", filename)
 	}
-	err = yaml.Unmarshal(source, &config)
+	err = yaml.Unmarshal(source, c)
 	if err != nil {
 		log.Fatalf("Could not parse config:\n%s", err)
 	}
-	return &config
 }

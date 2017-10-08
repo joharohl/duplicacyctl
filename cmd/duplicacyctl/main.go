@@ -5,9 +5,12 @@ import (
 	"github.com/joharohl/duplicacyctl/src/config"
 	"gopkg.in/urfave/cli.v1"
 	"os"
+	"github.com/spf13/afero"
 )
 
 func main() {
+	fs := afero.NewOsFs()
+
 	app := cli.NewApp()
 	app.Name = "duplicacyctl"
 	app.Usage = "Control your backups"
@@ -21,7 +24,8 @@ func main() {
 	}
 
 	app.Action = func(c *cli.Context) error {
-		conf := config.Load(c.String("config"))
+		conf := config.New()
+		conf.Load(fs, c.String("config"))
 		fmt.Printf(conf.String())
 		return nil
 	}
